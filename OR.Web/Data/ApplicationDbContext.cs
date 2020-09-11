@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using OR.Data;
 
 namespace OR.Web.Data
 {
@@ -12,5 +13,7 @@ namespace OR.Web.Data
             : base(options)
         {
         }
+
+        public DbSet<MembershipRequest> membershipRequest { get; set; }
     }
 }
