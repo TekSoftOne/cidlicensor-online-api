@@ -14,6 +14,6 @@ namespace OR.Web.Data
         {
         }
 
-        public DbSet<MembershipRequest> membershipRequest { get; set; }
+        public DbSet<MembershipRequest> MembershipRequests { get; set; }
     }
 }
