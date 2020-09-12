@@ -16,8 +16,10 @@ namespace OR.Data.Entities
 
         public async Task<int> CreateApplication(int membershipId)
         {
-            appContext.Add(new Application { MembershipId = membershipId });
-            return await appContext.SaveChangesAsync();
+            var app = new Application { MembershipId = membershipId };
+            appContext.Add(app);
+            await appContext.SaveChangesAsync();
+            return app.ApplicationNumber;
         }
     }
 

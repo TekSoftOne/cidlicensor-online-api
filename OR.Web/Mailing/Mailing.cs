@@ -2,7 +2,7 @@
 using System.Net.Mail;
 using System.Net.Mime;
 
-namespace OR.Web.Mailing
+namespace OR.Web
 {
     public static class Mailing
     {

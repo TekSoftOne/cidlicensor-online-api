@@ -19,7 +19,33 @@ namespace OR.Web.Apis
         {
             var membershipId = await this._dbContext.MembershipRequests.CreateMembershipRequest();
             var applicationId = await this._dbContext.Applications.CreateApplication(membershipId);
+
+            var customerEmail = "tiennsloit@gmail.com";
+            var customerName = "Joseph";
+            var emailSubject = "Hello from Online Request";
+            var emailBody = $"Hello {customerName}, your application number is {applicationId}, please use this to...";
+
+            var email = CreateEmail(customerEmail, emailSubject, emailBody);
+            Mailing.Send(email);
             return new OkObjectResult(applicationId);
+        }
+
+        private EmailModel CreateEmail(string toEmail, string subject, string body)
+        {
+            return new EmailModel
+            {
+                Body = body,
+                ToEmail = toEmail,
+                Subject = subject,
+                HasAttachment = false,
+                AttachmentPath = "",
+                SettingFromEmail = "josephnguyen@teksoft1.com",
+                SettingSMTPServer = "smtp.gmail.com",
+                SettingSMTPUserName = "josephnguyen@teksoft1.com",
+                SettingSMTPPassword = "pyyoppaajylsytel",
+                SettingPort = "587",
+                SettingSSL = true
+            };
         }
     }
 }

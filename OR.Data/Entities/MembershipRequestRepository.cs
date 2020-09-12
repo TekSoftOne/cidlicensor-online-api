@@ -13,8 +13,10 @@ namespace OR.Data
 
         public async Task<int> CreateMembershipRequest()
         {
-            this.appContext.MembershipRequests.Add(new MembershipRequest { FullAddress = "address1" });
-            return await this.appContext.SaveChangesAsync();
+            var membershipRequest = new MembershipRequest { FullAddress = "address1" };
+            this.appContext.MembershipRequests.Add(membershipRequest);
+            await this.appContext.SaveChangesAsync();
+            return membershipRequest.MembershipRequestId;
 
         }
     }

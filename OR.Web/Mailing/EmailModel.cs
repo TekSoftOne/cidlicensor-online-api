@@ -1,5 +1,5 @@
 ﻿using System;
-namespace OR.Web.Mailing
+namespace OR.Web
 {
     public class EmailModel
     {
