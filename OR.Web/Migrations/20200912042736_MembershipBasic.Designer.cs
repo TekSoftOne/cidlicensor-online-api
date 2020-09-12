@@ -10,8 +10,8 @@ using OR.Data;
 namespace OR.Web.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200911160303_membership_request_basic")]
-    partial class membership_request_basic
+    [Migration("20200912042736_MembershipBasic")]
+    partial class MembershipBasic
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -221,6 +221,23 @@ namespace OR.Web.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("OR.Data.Application", b =>
+                {
+                    b.Property<int>("ApplicationNumber")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("MembershipId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ApplicationNumber");
+
+                    b.HasIndex("MembershipId");
+
+                    b.ToTable("Applications");
+                });
+
             modelBuilder.Entity("OR.Data.MembershipRequest", b =>
                 {
                     b.Property<int>("MembershipRequestId")
@@ -228,11 +245,9 @@ namespace OR.Web.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("ApplicationNumber")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("FullAddress")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(1000)")
+                        .HasMaxLength(1000);
 
                     b.HasKey("MembershipRequestId");
 
@@ -286,6 +301,15 @@ namespace OR.Web.Migrations
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("OR.Data.Application", b =>
+                {
+                    b.HasOne("OR.Data.MembershipRequest", "MembershipRequest")
+                        .WithMany()
+                        .HasForeignKey("MembershipId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

@@ -21,6 +21,7 @@
     <Folder Include="JWT\" />
     <Folder Include="Apis\" />
     <Folder Include="Migrations\" />
+    <Folder Include="Mailing\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OR.Data\OR.Data.csproj">

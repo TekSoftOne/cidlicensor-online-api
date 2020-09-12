@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 namespace OR.Data
 {
@@ -12,10 +11,10 @@ namespace OR.Data
             get { return (ApplicationDbContext)_context; }
         }
 
-        public async Task CreateMembershipRequest()
+        public async Task<int> CreateMembershipRequest()
         {
-            this.appContext.MembershipRequests.Add(new MembershipRequest { ApplicationNumber = "123213123", FullAddress = "address1" });
-            await this.appContext.SaveChangesAsync();
+            this.appContext.MembershipRequests.Add(new MembershipRequest { FullAddress = "address1" });
+            return await this.appContext.SaveChangesAsync();
 
         }
     }

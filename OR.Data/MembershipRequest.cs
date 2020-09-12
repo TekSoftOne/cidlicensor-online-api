@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OR.Data
 {
@@ -7,7 +8,7 @@ namespace OR.Data
     {
         [Key]
         public int MembershipRequestId { get; set; }
+        [MaxLength(1000)]
         public string FullAddress { get; set; }
-        public string ApplicationNumber { get; set; }
     }
 }

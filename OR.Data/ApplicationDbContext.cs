@@ -15,5 +15,6 @@ namespace OR.Data
         }
 
         public DbSet<MembershipRequest> MembershipRequests { get; set; }
+        public DbSet<Application> Applications { get; set; }
     }
 }

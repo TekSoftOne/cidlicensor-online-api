@@ -1,8 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using OR.Data;
 
@@ -15,13 +11,15 @@ namespace OR.Web.Apis
         private readonly IDataFactory _dbContext;
         public MembershipRequestsController(IDataFactory dbContext)
         {
-            this._dbContext = dbContext;
+            _dbContext = dbContext;
         }
+
         [HttpPost("New")]
         public async Task<IActionResult> CreateRequest()
         {
-            await this._dbContext.MembershipRequests.CreateMembershipRequest();
-            return new OkResult();
+            var membershipId = await this._dbContext.MembershipRequests.CreateMembershipRequest();
+            var applicationId = await this._dbContext.Applications.CreateApplication(membershipId);
+            return new OkObjectResult(applicationId);
         }
     }
 }

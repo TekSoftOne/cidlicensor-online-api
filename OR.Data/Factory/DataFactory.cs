@@ -1,4 +1,5 @@
-using OR.Data;
+using OR.Data.Entities;
+using OR.Data.Interfaces;
 
 namespace OR.Data
 {
@@ -13,6 +14,7 @@ namespace OR.Data
 
 
         MembershipRequestRepository _membershipRequestRepository;
+        ApplicationRepository _applicationRepository;
 
         public IMembershipRequestRepository MembershipRequests
         {
@@ -23,6 +25,17 @@ namespace OR.Data
                 return _membershipRequestRepository;
             }
         }
+
+        public IApplicationRepository Applications
+        {
+            get
+            {
+                if (_applicationRepository == null)
+                    _applicationRepository = new ApplicationRepository(_context);
+                return _applicationRepository;
+            }
+        }
+
 
 
         public int SaveChanges()

@@ -1,4 +1,4 @@
-using OR.Data;
+using OR.Data.Interfaces;
 
 namespace OR.Data
 {
@@ -6,5 +6,6 @@ namespace OR.Data
     {
 
         IMembershipRequestRepository MembershipRequests { get; }
+        IApplicationRepository Applications { get; }
     }
 }

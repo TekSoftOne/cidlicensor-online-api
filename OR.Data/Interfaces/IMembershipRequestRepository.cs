@@ -5,6 +5,6 @@ namespace OR.Data
 {
     public interface IMembershipRequestRepository : IRepository<MembershipRequest>
     {
-        Task CreateMembershipRequest();
+        Task<int> CreateMembershipRequest();
     }
 }
