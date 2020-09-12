@@ -27,6 +27,7 @@ namespace OR.Web
 
     public class Startup
     {
+        readonly string _corsAllowList = "_corsAllowList";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -84,6 +85,11 @@ namespace OR.Web
 
             };
 
+            services.AddCors(options => options.AddPolicy(_corsAllowList, p => p.WithOrigins("http://localhost:4900")
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            .AllowCredentials()
+                                                                 ));
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "Online Request Apis", Version = "v1" });
@@ -125,7 +131,7 @@ namespace OR.Web
                 c.RoutePrefix = string.Empty;
             });
 
-
+            app.UseCors(_corsAllowList);
             app.UseRouting();
 
             app.UseAuthentication();

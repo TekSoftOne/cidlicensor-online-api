@@ -30,6 +30,14 @@ namespace OR.Web.Apis
             return new OkObjectResult(applicationId);
         }
 
+        [HttpPost("search")]
+        public async Task<IActionResult> SearchRequest([FromBody] int applicationNumber)
+        {
+            var request = await _dbContext.MembershipRequests.GetRequest(applicationNumber);
+
+            return new OkObjectResult(request);
+        }
+
         private EmailModel CreateEmail(string toEmail, string subject, string body)
         {
             return new EmailModel
