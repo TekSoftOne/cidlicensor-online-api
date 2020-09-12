@@ -10,8 +10,8 @@ namespace OR.Data
         public int MembershipRequestId { get; set; }
         [MaxLength(1000)]
         public string FullAddress { get; set; }
-        //[MaxLength(250)]
-        //public string Name { get; set; }//T
+        [MaxLength(250)]
+        public string Name { get; set; }//T
         //public int LocationId { get; set; }//T
         //public int GenderId { get; set; }//T
         //public DateTime BirthDay { get; set; }//T

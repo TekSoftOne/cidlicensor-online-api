@@ -1,9 +1,15 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using OR.Data;
+using OR.Data.ViewModels;
 
 namespace OR.Web.Apis
 {
+    public class ApplicationSearchModel
+    {
+        public int ApplicationNumber { get; set; }
+    }
+
     [Route("api/[controller]")]
     [ApiController]
     public class MembershipRequestsController : ControllerBase
@@ -15,9 +21,9 @@ namespace OR.Web.Apis
         }
 
         [HttpPost("New")]
-        public async Task<IActionResult> CreateRequest()
+        public async Task<IActionResult> CreateRequest([FromBody] MembershipRequestModel request)
         {
-            var membershipId = await this._dbContext.MembershipRequests.CreateMembershipRequest();
+            var membershipId = await this._dbContext.MembershipRequests.CreateMembershipRequest(request);
             var applicationId = await this._dbContext.Applications.CreateApplication(membershipId);
 
             var customerEmail = "tiennsloit@gmail.com";
@@ -31,9 +37,9 @@ namespace OR.Web.Apis
         }
 
         [HttpPost("search")]
-        public async Task<IActionResult> SearchRequest([FromBody] int applicationNumber)
+        public async Task<IActionResult> SearchRequest([FromBody] ApplicationSearchModel appSearch)
         {
-            var request = await _dbContext.MembershipRequests.GetRequest(applicationNumber);
+            var request = await _dbContext.MembershipRequests.GetRequest(appSearch.ApplicationNumber);
 
             return new OkObjectResult(request);
         }

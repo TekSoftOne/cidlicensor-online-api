@@ -1,5 +1,7 @@
 ﻿using System.Threading.Tasks;
 using System.Linq;
+using OR.Data.ViewModels;
+
 namespace OR.Data
 {
     public class MembershipRequestRepository : Repository<MembershipRequest>, IMembershipRequestRepository
@@ -11,9 +13,9 @@ namespace OR.Data
             get { return (ApplicationDbContext)_context; }
         }
 
-        public async Task<int> CreateMembershipRequest()
+        public async Task<int> CreateMembershipRequest(MembershipRequestModel requestModel)
         {
-            var membershipRequest = new MembershipRequest { FullAddress = "address1" };
+            var membershipRequest = new MembershipRequest { FullAddress = requestModel.FullAddress, Name = requestModel.Name };
             this.appContext.MembershipRequests.Add(membershipRequest);
             await this.appContext.SaveChangesAsync();
             return membershipRequest.MembershipRequestId;
