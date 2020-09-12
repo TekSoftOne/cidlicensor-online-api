@@ -44,6 +44,8 @@ namespace OR.Web
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddRazorPages();
 
+            services.AddScoped<IDataFactory, DataFactory>();
+
             //Simplify the password requirements
             services.AddIdentityCore<IdentityUser>(o =>
             {
