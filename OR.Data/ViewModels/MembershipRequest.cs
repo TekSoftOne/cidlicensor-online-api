@@ -15,7 +15,7 @@ namespace OR.Data.ViewModels
         public DateTime BirthDate { get; set; }//T
         public int NationId { get; set; }//T
         public int ReligionId { get; set; }//K
-        public RequestCategory TypeOfRequest { get; set; }
+        public RequestCategory RequestCategory { get; set; }
 
         public string Occupation { get; set; }//T -- //
         public int VisaResidency { get; set; }

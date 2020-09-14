@@ -39,7 +39,7 @@ namespace OR.Data
                 EmiratesIdFront = requestModel.EmiratesIdFrontUrl,
                 PassportAttachement = requestModel.PassportAttachementUrl,
                 ProfilePhoto = requestModel.ProfilePhotoUrl,
-                RequestCategory = (int)requestModel.TypeOfRequest,
+                RequestCategory = (int)requestModel.RequestCategory,
                 PhoneNumber = requestModel.PhoneNumber
 
             };
