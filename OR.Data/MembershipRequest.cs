@@ -36,7 +36,8 @@ namespace OR.Data
         public string PassportAttachement { get; set; }//T
         [MaxLength(250)]
         public string EmailAddress { get; set; }//T
-
+        public int RequestCategory { get; set; }
+        public string PhoneNumber { get; set; }
 
     }
 }

@@ -15,5 +15,12 @@ namespace OR.Data.Constants
             Male = 1,
             Female = 2
         }
+
+        public enum RequestCategory
+        {
+            New = 1,
+            Renewal = 2,
+            Replacement = 3
+        }
     }
 }

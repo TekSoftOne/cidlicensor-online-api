@@ -24,7 +24,7 @@ namespace OR.Data
             {
                 FullAddress = requestModel.FullAddress,
                 Name = requestModel.FullName,
-                BirthDay = requestModel.BirthDay,
+                BirthDay = requestModel.BirthDate,
                 EmailAddress = requestModel.EmailAddress,
                 EmiratesIdNumber = requestModel.EmiratesIdNumber,
                 GenderId = (int)requestModel.GenderId,
@@ -38,15 +38,14 @@ namespace OR.Data
                 EmiratesIdBack = requestModel.EmiratesIdBackUrl,
                 EmiratesIdFront = requestModel.EmiratesIdFrontUrl,
                 PassportAttachement = requestModel.PassportAttachementUrl,
-                ProfilePhoto = requestModel.ProfilePhotoUrl
+                ProfilePhoto = requestModel.ProfilePhotoUrl,
+                RequestCategory = (int)requestModel.TypeOfRequest,
+                PhoneNumber = requestModel.PhoneNumber
 
             };
 
-
-
-
-            this.appContext.MembershipRequests.Add(membershipRequest);
-            await this.appContext.SaveChangesAsync();
+            appContext.MembershipRequests.Add(membershipRequest);
+            await appContext.SaveChangesAsync();
             return membershipRequest.MembershipRequestId;
 
         }

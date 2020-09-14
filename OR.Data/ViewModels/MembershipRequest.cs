@@ -12,9 +12,10 @@ namespace OR.Data.ViewModels
         public int MembershipRequestId { get; set; }
         public int LocationId { get; set; }//T
         public Gender GenderId { get; set; }//T
-        public DateTime BirthDay { get; set; }//T
+        public DateTime BirthDate { get; set; }//T
         public int NationId { get; set; }//T
         public int ReligionId { get; set; }//K
+        public RequestCategory TypeOfRequest { get; set; }
 
         public string Occupation { get; set; }//T -- //
         public int VisaResidency { get; set; }
@@ -30,5 +31,6 @@ namespace OR.Data.ViewModels
         public string AuthorizationLetterUrl { get; set; }//
         public string PassportAttachementUrl { get; set; }//T
         public string EmailAddress { get; set; }//T
+        public string PhoneNumber { get; set; }
     }
 }
