@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using OR.CloudStorage;
 using OR.Data;
 using OR.Data.ViewModels;
 
@@ -15,25 +16,64 @@ namespace OR.Web.Apis
     public class MembershipRequestsController : ControllerBase
     {
         private readonly IDataFactory _dbContext;
-        public MembershipRequestsController(IDataFactory dbContext)
+        private readonly IRequestStorageManager _requestStorageManager;
+        public MembershipRequestsController(IDataFactory dbContext, IRequestStorageManager requestStorageManager)
         {
             _dbContext = dbContext;
+            _requestStorageManager = requestStorageManager;
         }
 
         [HttpPost("New")]
-        public async Task<IActionResult> CreateRequest([FromBody] MembershipRequestModel request)
+        public async Task<IActionResult> CreateRequest([FromForm] MembershipRequestModel requestModel)
         {
-            var membershipId = await _dbContext.MembershipRequests.CreateMembershipRequest(request);
-            var applicationId = await _dbContext.Applications.CreateApplication(membershipId);
+            try
+            {
+                if (requestModel.PassportAttachement != null)
+                {
+                    //upload file
+                    requestModel.PassportAttachementUrl = await this._requestStorageManager.UploadDocument(requestModel.EmiratesIdNumber, "passport", requestModel.PassportAttachement);
+                }
 
-            var customerEmail = "tiennsloit@gmail.com";
-            var customerName = "Joseph";
-            var emailSubject = "Hello from Online Request";
-            var emailBody = $"Hello {customerName}, your application number is {applicationId}, please use this to...";
+                if (requestModel.ProfilePhoto != null)
+                {
+                    //upload file
+                    requestModel.ProfilePhotoUrl = await this._requestStorageManager.UploadDocument(requestModel.EmiratesIdNumber, "profilePhoto", requestModel.ProfilePhoto);
+                }
 
-            var email = CreateEmail(customerEmail, emailSubject, emailBody);
-            Mailing.Send(email);
-            return new OkObjectResult(applicationId);
+                if (requestModel.AuthorizationLetter != null)
+                {
+                    //upload file
+                    requestModel.AuthorizationLetterUrl = await this._requestStorageManager.UploadDocument(requestModel.EmiratesIdNumber, "authorizationLetter", requestModel.AuthorizationLetter);
+                }
+
+                if (requestModel.EmiratesIdBack != null)
+                {
+                    //upload file
+                    requestModel.EmiratesIdBackUrl = await this._requestStorageManager.UploadDocument(requestModel.EmiratesIdNumber, "emiratesIdBack", requestModel.EmiratesIdBack);
+                }
+
+                if (requestModel.EmiratesIdFront != null)
+                {
+                    //upload file
+                    requestModel.EmiratesIdFrontUrl = await this._requestStorageManager.UploadDocument(requestModel.EmiratesIdNumber, "emiratesIdFront", requestModel.EmiratesIdFront);
+                }
+
+                var membershipId = await _dbContext.MembershipRequests.CreateMembershipRequest(requestModel);
+                var applicationId = await _dbContext.Applications.CreateApplication(membershipId);
+
+                var customerEmail = "tiennsloit@gmail.com";
+                var customerName = "Joseph";
+                var emailSubject = "Hello from Online Request";
+                var emailBody = $"Hello {customerName}, your application number is {applicationId}, please use this to...";
+
+                var email = CreateEmail(customerEmail, emailSubject, emailBody);
+                Mailing.Send(email);
+                return new OkObjectResult(applicationId);
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
         }
 
         [HttpPost("search")]

@@ -54,6 +54,7 @@ namespace OR.Web
 
             services.AddScoped<IRequestStorageManager, RequestStorageManager>();
 
+            services.AddControllers().AddNewtonsoftJson();
             //Simplify the password requirements
             services.AddIdentityCore<IdentityUser>(o =>
             {

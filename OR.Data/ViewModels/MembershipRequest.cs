@@ -24,6 +24,11 @@ namespace OR.Data.ViewModels
         public IFormFile EmiratesIdFront { get; set; }//
         public IFormFile AuthorizationLetter { get; set; }//
         public IFormFile PassportAttachement { get; set; }//T
+        public string ProfilePhotoUrl { get; set; }//T
+        public string EmiratesIdBackUrl { get; set; }//T
+        public string EmiratesIdFrontUrl { get; set; }//
+        public string AuthorizationLetterUrl { get; set; }//
+        public string PassportAttachementUrl { get; set; }//T
         public string EmailAddress { get; set; }//T
     }
 }

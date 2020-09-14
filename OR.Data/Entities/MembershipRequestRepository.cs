@@ -7,10 +7,12 @@ namespace OR.Data
 {
     public class MembershipRequestRepository : Repository<MembershipRequest>, IMembershipRequestRepository
     {
-        private readonly IRequestStorageManager _requestStorageManager;
-        public MembershipRequestRepository(ApplicationDbContext context,
-            IRequestStorageManager _requestStorageManager) : base(context)
-        { }
+
+        public MembershipRequestRepository(ApplicationDbContext context
+           ) : base(context)
+        {
+
+        }
         private ApplicationDbContext appContext
         {
             get { return (ApplicationDbContext)_context; }
@@ -31,39 +33,16 @@ namespace OR.Data
                 Occupation = requestModel.Occupation,
                 PassportNumber = requestModel.PassportNumber,
                 ReligionId = requestModel.ReligionId,
-                VisaResidency = requestModel.VisaResidency
+                VisaResidency = requestModel.VisaResidency,
+                AuthorizationLetter = requestModel.AuthorizationLetterUrl,
+                EmiratesIdBack = requestModel.EmiratesIdBackUrl,
+                EmiratesIdFront = requestModel.EmiratesIdFrontUrl,
+                PassportAttachement = requestModel.PassportAttachementUrl,
+                ProfilePhoto = requestModel.ProfilePhotoUrl
 
             };
 
-            if (requestModel.PassportAttachement != null)
-            {
-                //upload file
-                membershipRequest.PassportAttachement = await this._requestStorageManager.UploadDocument(requestModel.EmailAddress, "passport", requestModel.PassportAttachement);
-            }
 
-            if (requestModel.ProfilePhoto != null)
-            {
-                //upload file
-                membershipRequest.ProfilePhoto = await this._requestStorageManager.UploadDocument(requestModel.EmailAddress, "profilePhoto", requestModel.ProfilePhoto);
-            }
-
-            if (requestModel.AuthorizationLetter != null)
-            {
-                //upload file
-                membershipRequest.AuthorizationLetter = await this._requestStorageManager.UploadDocument(requestModel.EmailAddress, "authorizationLetter", requestModel.AuthorizationLetter);
-            }
-
-            if (requestModel.EmiratesIdBack != null)
-            {
-                //upload file
-                membershipRequest.EmiratesIdBack = await this._requestStorageManager.UploadDocument(requestModel.EmailAddress, "emiratesIdBack", requestModel.EmiratesIdBack);
-            }
-
-            if (requestModel.EmiratesIdFront != null)
-            {
-                //upload file
-                membershipRequest.EmiratesIdFront = await this._requestStorageManager.UploadDocument(requestModel.EmailAddress, "emiratesIdFront", requestModel.EmiratesIdFront);
-            }
 
 
             this.appContext.MembershipRequests.Add(membershipRequest);

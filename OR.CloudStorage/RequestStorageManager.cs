@@ -19,7 +19,7 @@ namespace OR.CloudStorage
     public class RequestStorageManager : IRequestStorageManager
     {
         private readonly IBlobStorageService _blobStorage;
-        private readonly string _containerName = "onlineRequests";
+        private readonly string _containerName = "onlinerequests";
 
         public RequestStorageManager(IBlobStorageService blobStorage)
         {
