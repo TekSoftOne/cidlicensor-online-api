@@ -23,8 +23,8 @@ namespace OR.Web.Apis
         [HttpPost("New")]
         public async Task<IActionResult> CreateRequest([FromBody] MembershipRequestModel request)
         {
-            var membershipId = await this._dbContext.MembershipRequests.CreateMembershipRequest(request);
-            var applicationId = await this._dbContext.Applications.CreateApplication(membershipId);
+            var membershipId = await _dbContext.MembershipRequests.CreateMembershipRequest(request);
+            var applicationId = await _dbContext.Applications.CreateApplication(membershipId);
 
             var customerEmail = "tiennsloit@gmail.com";
             var customerName = "Joseph";

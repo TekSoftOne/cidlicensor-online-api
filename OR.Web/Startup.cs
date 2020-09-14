@@ -15,6 +15,8 @@ using Microsoft.Extensions.Hosting;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using OR.CloudStorage.Configurations;
+using OR.CloudStorage;
 
 namespace OR.Web
 {
@@ -38,6 +40,7 @@ namespace OR.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<AzureBlobOptions>(Configuration.GetSection("BlobStorage"));
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("OR.Web")));
@@ -46,6 +49,10 @@ namespace OR.Web
             services.AddRazorPages();
 
             services.AddScoped<IDataFactory, DataFactory>();
+
+            services.AddScoped<IBlobStorageService, BlobStorageService>();
+
+            services.AddScoped<IRequestStorageManager, RequestStorageManager>();
 
             //Simplify the password requirements
             services.AddIdentityCore<IdentityUser>(o =>

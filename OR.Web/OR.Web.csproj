@@ -22,10 +22,12 @@
     <Folder Include="Apis\" />
     <Folder Include="Migrations\" />
     <Folder Include="Mailing\" />
-    <Folder Include="Constants\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OR.Data\OR.Data.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
+    <ProjectReference Include="..\OR.CloudStorage\OR.CloudStorage.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
   </ItemGroup>

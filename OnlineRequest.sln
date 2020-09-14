@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OR.Web", "OR.Web\OR.Web.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OR.Data", "OR.Data\OR.Data.csproj", "{AB6060F1-CCF5-44F3-AB5C-344F0D0D94DF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OR.CloudStorage", "OR.CloudStorage\OR.CloudStorage.csproj", "{A6099E7D-0B00-4776-B2D9-AADC70CBBD63}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,5 +21,9 @@ Global
 		{AB6060F1-CCF5-44F3-AB5C-344F0D0D94DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB6060F1-CCF5-44F3-AB5C-344F0D0D94DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB6060F1-CCF5-44F3-AB5C-344F0D0D94DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6099E7D-0B00-4776-B2D9-AADC70CBBD63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6099E7D-0B00-4776-B2D9-AADC70CBBD63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6099E7D-0B00-4776-B2D9-AADC70CBBD63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6099E7D-0B00-4776-B2D9-AADC70CBBD63}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
