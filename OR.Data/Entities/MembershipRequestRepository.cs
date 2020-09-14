@@ -21,7 +21,7 @@ namespace OR.Data
             var membershipRequest = new MembershipRequest
             {
                 FullAddress = requestModel.FullAddress,
-                Name = requestModel.Name,
+                Name = requestModel.FullName,
                 BirthDay = requestModel.BirthDay,
                 EmailAddress = requestModel.EmailAddress,
                 EmiratesIdNumber = requestModel.EmiratesIdNumber,
