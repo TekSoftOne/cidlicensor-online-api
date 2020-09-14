@@ -93,7 +93,10 @@ namespace OR.Web
 
             };
 
-            services.AddCors(options => options.AddPolicy(_corsAllowList, p => p.WithOrigins("http://localhost:4900")
+            services.AddCors(options => options.AddPolicy(_corsAllowList, p => p.WithOrigins(
+                "http://localhost:4900",
+                "http://or-api-test.cidlicensor.com",
+                "http://or-test.cidlicensor.com")
             .AllowAnyMethod()
             .AllowAnyHeader()
             .AllowCredentials()

@@ -23,6 +23,12 @@ namespace OR.Web.Apis
             _requestStorageManager = requestStorageManager;
         }
 
+        [HttpPost("status")]
+        public async Task<IActionResult> UpdateStatus()
+        {
+            return new OkObjectResult(true);
+        }
+
         [HttpPost("New")]
         public async Task<IActionResult> CreateRequest([FromForm] MembershipRequestModel requestModel)
         {
