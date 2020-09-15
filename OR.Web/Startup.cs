@@ -66,13 +66,14 @@ namespace OR.Web
                 o.Password.RequiredLength = 6;
             });
 
-            var issuer = "webApi12";
-            var audience = "http://localhost:5000";
-            var signingKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes("this-is-my-secret-key"));
+            var jwtOptions = Configuration.GetSection(nameof(JwtIssuerOptions));
+            var issuer = "onlineRequestApi";
+            var audience = jwtOptions[nameof(JwtIssuerOptions.Audience)];
+            var signingKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes("-t#B7@-@np%_kuEms7(6FPS6Zr3tS8mZ)FKq;T"));
             services.Configure<JwtIssuerOptions>(options =>
             {
-                options.Issuer = issuer;// jwtAppSettingOptions[nameof(JwtIssuerOptions.Issuer)];
-                options.Audience = audience;// jwtAppSettingOptions[nameof(JwtIssuerOptions.Audience)];
+                options.Issuer = issuer;
+                options.Audience = audience;
                 options.SigningKey = signingKey;
             });
 
