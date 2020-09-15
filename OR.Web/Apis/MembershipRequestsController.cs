@@ -11,6 +11,12 @@ namespace OR.Web.Apis
         public int ApplicationNumber { get; set; }
     }
 
+    public class MembershipUpdateModel
+    {
+        public string MembershipNumber { get; set; }
+        public string Status { get; set; }
+    }
+
     [Route("api/[controller]")]
     [ApiController]
     public class MembershipRequestsController : ControllerBase
@@ -24,9 +30,9 @@ namespace OR.Web.Apis
         }
 
         [HttpPost("status")]
-        public async Task<IActionResult> UpdateStatus()
+        public async Task<IActionResult> UpdateStatus([FromBody] MembershipUpdateModel status)
         {
-            return new OkObjectResult(true);
+            return new OkObjectResult("Success");
         }
 
         [HttpPost("New")]
