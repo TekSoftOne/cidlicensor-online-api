@@ -52,14 +52,14 @@ namespace OR.Data
 
         public async Task<MembershipRequest> GetRequest(int applicationNumber)
         {
-            MembershipRequest m = null;
-            var app = await this.appContext.Applications.FindAsync(applicationNumber);
+            MembershipRequest request = null;
+            var app = await appContext.Applications.FindAsync(applicationNumber);
             if (app != null)
             {
-                m = await this.appContext.MembershipRequests.FindAsync(app.MembershipId);
+                request = await appContext.MembershipRequests.FindAsync(app.MembershipId);
             }
 
-            return m;
+            return request;
         }
     }
 }

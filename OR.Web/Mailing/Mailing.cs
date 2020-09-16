@@ -6,6 +6,23 @@ namespace OR.Web
 {
     public static class Mailing
     {
+        public static EmailModel CreateEmail(string toEmail, string subject, string body)
+        {
+            return new EmailModel
+            {
+                Body = body,
+                ToEmail = toEmail,
+                Subject = subject,
+                HasAttachment = false,
+                AttachmentPath = "",
+                SettingFromEmail = "josephnguyen@teksoft1.com",
+                SettingSMTPServer = "smtp.gmail.com",
+                SettingSMTPUserName = "josephnguyen@teksoft1.com",
+                SettingSMTPPassword = "pyyoppaajylsytel",
+                SettingPort = "587",
+                SettingSSL = true
+            };
+        }
 
         public static bool Send(EmailModel emailModel)
         {

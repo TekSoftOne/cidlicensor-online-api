@@ -35,6 +35,7 @@ namespace OR.Web.Apis
             return new OkObjectResult("Success");
         }
 
+
         [HttpPost("New")]
         public async Task<IActionResult> CreateRequest([FromForm] MembershipRequestModel requestModel)
         {
@@ -78,7 +79,7 @@ namespace OR.Web.Apis
                 var emailSubject = "Hello from Online Request";
                 var emailBody = $"Hello {customerName}, your application number is {applicationId}, please use this to...";
 
-                var email = CreateEmail(customerEmail, emailSubject, emailBody);
+                var email = Mailing.CreateEmail(customerEmail, emailSubject, emailBody);
                 Mailing.Send(email);
                 return new OkObjectResult(applicationId);
             }
@@ -96,22 +97,6 @@ namespace OR.Web.Apis
             return new OkObjectResult(request);
         }
 
-        private EmailModel CreateEmail(string toEmail, string subject, string body)
-        {
-            return new EmailModel
-            {
-                Body = body,
-                ToEmail = toEmail,
-                Subject = subject,
-                HasAttachment = false,
-                AttachmentPath = "",
-                SettingFromEmail = "josephnguyen@teksoft1.com",
-                SettingSMTPServer = "smtp.gmail.com",
-                SettingSMTPUserName = "josephnguyen@teksoft1.com",
-                SettingSMTPPassword = "pyyoppaajylsytel",
-                SettingPort = "587",
-                SettingSSL = true
-            };
-        }
+
     }
 }
