@@ -58,9 +58,6 @@ namespace OR.Web
             byte[] data = System.Convert.FromBase64String(base64EncodedPassword);
             string base64DecodedPassword = System.Text.ASCIIEncoding.ASCII.GetString(data);
 
-
-
-
             var customerEmail = userModel.Email;
             var customerName = userModel.FullName;
             var emailSubject = "Hello from Online Request";
