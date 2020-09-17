@@ -27,5 +27,18 @@ namespace OR.Web.Apis
 
             //return new VerificationResult(new List<string>{"Your phone number is already verified"});
         }
+
+        [HttpPost("checkCode")]
+        public async Task<VerificationResult> CheckCode([FromBody] VerificationModel verificationCode)
+        {
+            //var user = await _userManager.GetUserAsync(HttpContext.User);
+
+            //if (!user.Verified)
+            //{
+            return await _verification.CheckVerificationAsync(verificationCode.PhoneNumber, verificationCode.Code);
+            //}
+
+            //return new VerificationResult(new List<string>{"Your phone number is already verified"});
+        }
     }
 }
