@@ -16,29 +16,15 @@ namespace OR.Web.Apis
         }
 
         [HttpPost("check")]
-        public async Task<VerificationResult> Check([FromBody] string phoneNumber)
+        public async Task<VerificationResult> Check([FromBody] VerificationModel verificationModel)
         {
-            //var user = await _userManager.GetUserAsync(HttpContext.User);
-
-            //if (!user.Verified)
-            //{
-            return await _verification.StartVerificationAsync(phoneNumber, "sms");
-            //}
-
-            //return new VerificationResult(new List<string>{"Your phone number is already verified"});
+            return await _verification.StartVerificationAsync(verificationModel.PhoneNumber, "sms");
         }
 
         [HttpPost("checkCode")]
         public async Task<VerificationResult> CheckCode([FromBody] VerificationModel verificationCode)
         {
-            //var user = await _userManager.GetUserAsync(HttpContext.User);
-
-            //if (!user.Verified)
-            //{
             return await _verification.CheckVerificationAsync(verificationCode.PhoneNumber, verificationCode.Code);
-            //}
-
-            //return new VerificationResult(new List<string>{"Your phone number is already verified"});
         }
     }
 }
