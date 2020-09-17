@@ -17,6 +17,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using OR.CloudStorage.Configurations;
 using OR.CloudStorage;
+using OR.Web.Twilio;
 
 namespace OR.Web
 {
@@ -46,6 +47,9 @@ namespace OR.Web
                     Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("OR.Web")));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            services.Configure<Configuration.Twilio>(Configuration.GetSection("Twilio"));
+
             services.AddRazorPages();
 
             services.AddScoped<IDataFactory, DataFactory>();
@@ -53,6 +57,8 @@ namespace OR.Web
             services.AddScoped<IBlobStorageService, BlobStorageService>();
 
             services.AddScoped<IRequestStorageManager, RequestStorageManager>();
+
+            services.AddScoped<IVerification, Verification>();
 
             services.AddControllers().AddNewtonsoftJson();
             //Simplify the password requirements
@@ -97,6 +103,8 @@ namespace OR.Web
             services.AddCors(options => options.AddPolicy(_corsAllowList, p => p.WithOrigins(
                 "http://localhost:4900",
                 "http://or-api-test.cidlicensor.com",
+                "https://or-api-test.cidlicensor.com",
+                "https://or-api.cidlicensor.com",
                 "http://or-test.cidlicensor.com")
             .AllowAnyMethod()
             .AllowAnyHeader()
