@@ -102,10 +102,10 @@ namespace OR.Web
 
             services.AddCors(options => options.AddPolicy(_corsAllowList, p => p.WithOrigins(
                 "http://localhost:4900",
-                "http://or-api-test.cidlicensor.com",
-                "https://or-api-test.cidlicensor.com",
-                "https://or-api.cidlicensor.com",
-                "http://or-test.cidlicensor.com")
+                "http://onlinerequest-api.cidlicensor.support",
+                "https://onlinerequest-api.cidlicensor.support",
+                "http://onlinerequest.cidlicensor.support",
+                  "https://onlinerequest.cidlicensor.support",)
             .AllowAnyMethod()
             .AllowAnyHeader()
             .AllowCredentials()
