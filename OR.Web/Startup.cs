@@ -105,7 +105,7 @@ namespace OR.Web
                 "http://onlinerequest-api.cidlicensor.support",
                 "https://onlinerequest-api.cidlicensor.support",
                 "http://onlinerequest.cidlicensor.support",
-                  "https://onlinerequest.cidlicensor.support",)
+                  "https://onlinerequest.cidlicensor.support")
             .AllowAnyMethod()
             .AllowAnyHeader()
             .AllowCredentials()
