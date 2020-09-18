@@ -12,7 +12,7 @@ namespace OR.Data
         [MaxLength(1000)]
         public string FullAddress { get; set; }
         [MaxLength(250)]
-        public string Name { get; set; }//T
+        public string FullName { get; set; }//T
         public int LocationId { get; set; }//T
         public int GenderId { get; set; }//T
         public DateTime BirthDay { get; set; }//T
@@ -22,7 +22,7 @@ namespace OR.Data
         public string Occupation { get; set; }//T -- //
         public int VisaResidency { get; set; }
         [MaxLength(250)]
-        public string EmiratesIdNumber { get; set; }
+        public string EmiratesIDNumber { get; set; }
         [MaxLength(250)]
         public string PassportNumber { get; set; }//T
         [MaxLength(250)]
@@ -36,7 +36,7 @@ namespace OR.Data
 
         public string PassportAttachementUrl { get; set; }//T
         [MaxLength(250)]
-        public string EmailAddress { get; set; }//T
+        public string Email { get; set; }//T
         public int RequestCategory { get; set; }
         public string PhoneNumber { get; set; }
         public int TypeOfCustomer { get; set; }

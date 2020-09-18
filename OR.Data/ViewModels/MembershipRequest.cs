@@ -9,7 +9,7 @@ namespace OR.Data.ViewModels
     {
         public string FullName { get; set; }
         public string FullAddress { get; set; }
-        public string EmiratesIdNumber { get; set; }
+        public string EmiratesIDNumber { get; set; }
         public int MembershipRequestId { get; set; }
         public int LocationId { get; set; }//T
         public Gender GenderId { get; set; }//T
@@ -37,7 +37,7 @@ namespace OR.Data.ViewModels
         public string EmiratesIdFrontUrl { get; set; }//
         public string AuthorizationLetterUrl { get; set; }//
         public string PassportAttachementUrl { get; set; }//T
-        public string EmailAddress { get; set; }//T
+        public string Email { get; set; }//T
         public string PhoneNumber { get; set; }
         public int ApplicationNumber { get; set; }
     }
@@ -46,7 +46,7 @@ namespace OR.Data.ViewModels
     {
         public string FullName { get; set; }
         public string FullAddress { get; set; }
-        public string EmiratesIdNumber { get; set; }
+        public string EmiratesIDNumber { get; set; }
         public int MembershipRequestId { get; set; }
         public int LocationId { get; set; }//T
         public Gender GenderId { get; set; }//T
@@ -74,7 +74,7 @@ namespace OR.Data.ViewModels
         public string EmiratesIdFrontUrl { get; set; }//
         public string AuthorizationLetterUrl { get; set; }//
         public string PassportAttachementUrl { get; set; }//T
-        public string EmailAddress { get; set; }//T
+        public string Email { get; set; }//T
         public string PhoneNumber { get; set; }
         public int ApplicationNumber { get; set; }
     }

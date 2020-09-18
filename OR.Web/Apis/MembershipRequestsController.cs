@@ -44,7 +44,7 @@ namespace OR.Web.Apis
 
 
         [HttpPost("Update")]
-        public async Task<IActionResult> CreateRequest([FromForm] MembershipRequestModel requestModel)
+        public async Task<IActionResult> CreateOrUpdateRequest([FromForm] MembershipRequestModel requestModel)
         {
 
             var isNew = requestModel.ApplicationNumber <= 0;
@@ -53,31 +53,31 @@ namespace OR.Web.Apis
                 if (requestModel.PassportAttachement != null)
                 {
                     //upload file
-                    requestModel.PassportAttachementUrl = await _requestStorageManager.UploadDocument(requestModel.EmiratesIdNumber, "passport", requestModel.PassportAttachement);
+                    requestModel.PassportAttachementUrl = await _requestStorageManager.UploadDocument(requestModel.EmiratesIDNumber, "passport", requestModel.PassportAttachement);
                 }
 
                 if (requestModel.ProfilePhoto != null)
                 {
                     //upload file
-                    requestModel.ProfilePhotoUrl = await _requestStorageManager.UploadDocument(requestModel.EmiratesIdNumber, "profilePhoto", requestModel.ProfilePhoto);
+                    requestModel.ProfilePhotoUrl = await _requestStorageManager.UploadDocument(requestModel.EmiratesIDNumber, "profilePhoto", requestModel.ProfilePhoto);
                 }
 
                 if (requestModel.AuthorizationLetter != null)
                 {
                     //upload file
-                    requestModel.AuthorizationLetterUrl = await _requestStorageManager.UploadDocument(requestModel.EmiratesIdNumber, "authorizationLetter", requestModel.AuthorizationLetter);
+                    requestModel.AuthorizationLetterUrl = await _requestStorageManager.UploadDocument(requestModel.EmiratesIDNumber, "authorizationLetter", requestModel.AuthorizationLetter);
                 }
 
                 if (requestModel.EmiratesIdBack != null)
                 {
                     //upload file
-                    requestModel.EmiratesIdBackUrl = await _requestStorageManager.UploadDocument(requestModel.EmiratesIdNumber, "emiratesIdBack", requestModel.EmiratesIdBack);
+                    requestModel.EmiratesIdBackUrl = await _requestStorageManager.UploadDocument(requestModel.EmiratesIDNumber, "emiratesIdBack", requestModel.EmiratesIdBack);
                 }
 
                 if (requestModel.EmiratesIdFront != null)
                 {
                     //upload file
-                    requestModel.EmiratesIdFrontUrl = await _requestStorageManager.UploadDocument(requestModel.EmiratesIdNumber, "emiratesIdFront", requestModel.EmiratesIdFront);
+                    requestModel.EmiratesIdFrontUrl = await _requestStorageManager.UploadDocument(requestModel.EmiratesIDNumber, "emiratesIdFront", requestModel.EmiratesIdFront);
                 }
 
                 var membership = await _dbContext.MembershipRequests.UpdateMembership(requestModel);
@@ -86,7 +86,7 @@ namespace OR.Web.Apis
                 var emailSubject = "";
                 var emailBody = "";
 
-                var customerEmail = requestModel.EmailAddress;
+                var customerEmail = requestModel.Email;
                 var customerName = requestModel.FullName;
 
                 if (isNew)

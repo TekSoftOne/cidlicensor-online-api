@@ -29,10 +29,10 @@ namespace OR.Data
             }
 
             membership.FullAddress = requestModel.FullAddress;
-            membership.Name = requestModel.FullName;
+            membership.FullName = requestModel.FullName;
             membership.BirthDay = requestModel.BirthDate;
-            membership.EmailAddress = requestModel.EmailAddress;
-            membership.EmiratesIdNumber = requestModel.EmiratesIdNumber;
+            membership.Email = requestModel.Email;
+            membership.EmiratesIDNumber = requestModel.EmiratesIDNumber;
             membership.GenderId = (int)requestModel.GenderId;
             membership.LocationId = requestModel.LocationId;
             membership.NationId = requestModel.NationId;
