@@ -25,15 +25,15 @@ namespace OR.Data
         [MaxLength(250)]
         public string PassportNumber { get; set; }//T
         [MaxLength(250)]
-        public string ProfilePhoto { get; set; }//T
+        public string ProfilePhotoUrl { get; set; }//T
 
-        public string EmiratesIdBack { get; set; }//T
+        public string EmiratesIdBackUrl { get; set; }//T
 
-        public string EmiratesIdFront { get; set; }//
+        public string EmiratesIdFrontUrl { get; set; }//
 
-        public string AuthorizationLetter { get; set; }//
+        public string AuthorizationLetterUrl { get; set; }//
 
-        public string PassportAttachement { get; set; }//T
+        public string PassportAttachementUrl { get; set; }//T
         [MaxLength(250)]
         public string EmailAddress { get; set; }//T
         public int RequestCategory { get; set; }

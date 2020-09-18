@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Http;
 using static OR.Data.Constants.Data;
 
@@ -20,10 +21,15 @@ namespace OR.Data.ViewModels
         public string Occupation { get; set; }//T -- //
         public int VisaResidency { get; set; }
         public string PassportNumber { get; set; }//T
+        [DisplayFormat(ApplyFormatInEditMode = true)]
         public IFormFile ProfilePhoto { get; set; }//T
+        [DisplayFormat(ApplyFormatInEditMode = true)]
         public IFormFile EmiratesIdBack { get; set; }//T
+        [DisplayFormat(ApplyFormatInEditMode = true)]
         public IFormFile EmiratesIdFront { get; set; }//
+        [DisplayFormat(ApplyFormatInEditMode = true)]
         public IFormFile AuthorizationLetter { get; set; }//
+        [DisplayFormat(ApplyFormatInEditMode = true)]
         public IFormFile PassportAttachement { get; set; }//T
         public string ProfilePhotoUrl { get; set; }//T
         public string EmiratesIdBackUrl { get; set; }//T
@@ -32,5 +38,6 @@ namespace OR.Data.ViewModels
         public string PassportAttachementUrl { get; set; }//T
         public string EmailAddress { get; set; }//T
         public string PhoneNumber { get; set; }
+        public int ApplicationNumber { get; set; }
     }
 }

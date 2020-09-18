@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using OR.CloudStorage;
 using OR.Data;
@@ -23,10 +24,15 @@ namespace OR.Web.Apis
     {
         private readonly IDataFactory _dbContext;
         private readonly IRequestStorageManager _requestStorageManager;
-        public MembershipRequestsController(IDataFactory dbContext, IRequestStorageManager requestStorageManager)
+        private readonly IMapper _mapper;
+        public MembershipRequestsController(IDataFactory dbContext,
+            IRequestStorageManager requestStorageManager,
+            IMapper mapper
+            )
         {
             _dbContext = dbContext;
             _requestStorageManager = requestStorageManager;
+            _mapper = mapper;
         }
 
         [HttpPost("status")]
@@ -92,9 +98,22 @@ namespace OR.Web.Apis
         [HttpPost("search")]
         public async Task<IActionResult> SearchRequest([FromBody] ApplicationSearchModel appSearch)
         {
-            var request = await _dbContext.MembershipRequests.GetRequest(appSearch.ApplicationNumber);
+            try
+            {
+                var app = await _dbContext.Applications.GetApplication(appSearch.ApplicationNumber);
 
-            return new OkObjectResult(request);
+                var request = await _dbContext.MembershipRequests.GetRequest(app.MembershipId);
+
+                var applicationiRequest = _mapper.Map<MembershipRequestModel>(request);
+
+                applicationiRequest.ApplicationNumber = app.ApplicationNumber;
+
+                return new OkObjectResult(request);
+            }
+            catch (System.Exception ex)
+            {
+                return BadRequest(ex);
+            }
         }
 
 

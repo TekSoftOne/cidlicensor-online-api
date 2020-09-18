@@ -18,6 +18,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using OR.CloudStorage.Configurations;
 using OR.CloudStorage;
 using OR.Web.Twilio;
+using AutoMapper;
 
 namespace OR.Web
 {
@@ -51,6 +52,13 @@ namespace OR.Web
             services.Configure<Configuration.Twilio>(Configuration.GetSection("Twilio"));
 
             services.AddRazorPages();
+
+            var mappingConfig = new MapperConfiguration(mapper =>
+           {
+               mapper.AddProfile(new MapperProfile());
+           });
+            IMapper mapper = mappingConfig.CreateMapper();
+            services.AddSingleton(mapper);
 
             services.AddScoped<IDataFactory, DataFactory>();
 

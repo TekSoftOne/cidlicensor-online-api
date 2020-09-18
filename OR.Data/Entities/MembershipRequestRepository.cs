@@ -2,6 +2,7 @@
 using System.Linq;
 using OR.Data.ViewModels;
 using OR.CloudStorage;
+using AutoMapper;
 
 namespace OR.Data
 {
@@ -34,11 +35,11 @@ namespace OR.Data
                 PassportNumber = requestModel.PassportNumber,
                 ReligionId = requestModel.ReligionId,
                 VisaResidency = requestModel.VisaResidency,
-                AuthorizationLetter = requestModel.AuthorizationLetterUrl,
-                EmiratesIdBack = requestModel.EmiratesIdBackUrl,
-                EmiratesIdFront = requestModel.EmiratesIdFrontUrl,
-                PassportAttachement = requestModel.PassportAttachementUrl,
-                ProfilePhoto = requestModel.ProfilePhotoUrl,
+                AuthorizationLetterUrl = requestModel.AuthorizationLetterUrl,
+                EmiratesIdBackUrl = requestModel.EmiratesIdBackUrl,
+                EmiratesIdFrontUrl = requestModel.EmiratesIdFrontUrl,
+                PassportAttachementUrl = requestModel.PassportAttachementUrl,
+                ProfilePhotoUrl = requestModel.ProfilePhotoUrl,
                 RequestCategory = (int)requestModel.RequestCategory,
                 PhoneNumber = requestModel.PhoneNumber
 
@@ -50,16 +51,9 @@ namespace OR.Data
 
         }
 
-        public async Task<MembershipRequest> GetRequest(int applicationNumber)
+        public async Task<MembershipRequest> GetRequest(int membershipId)
         {
-            MembershipRequest request = null;
-            var app = await appContext.Applications.FindAsync(applicationNumber);
-            if (app != null)
-            {
-                request = await appContext.MembershipRequests.FindAsync(app.MembershipId);
-            }
-
-            return request;
+            return await appContext.MembershipRequests.FindAsync(membershipId);
         }
     }
 }

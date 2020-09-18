@@ -21,6 +21,11 @@ namespace OR.Data.Entities
             await appContext.SaveChangesAsync();
             return app.ApplicationNumber;
         }
+
+        public async Task<Application> GetApplication(int applicationNumber)
+        {
+            return await appContext.Applications.FindAsync(applicationNumber);
+        }
     }
 
 
