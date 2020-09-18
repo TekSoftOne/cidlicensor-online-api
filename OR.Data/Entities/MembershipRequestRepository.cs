@@ -19,36 +19,50 @@ namespace OR.Data
             get { return (ApplicationDbContext)_context; }
         }
 
-        public async Task<int> CreateMembershipRequest(MembershipRequestModel requestModel)
+        public async Task<MembershipRequest> UpdateMembership(MembershipRequestModel requestModel)
         {
-            var membershipRequest = new MembershipRequest
+            var isNew = requestModel.MembershipRequestId <= 0;
+            MembershipRequest membership = new MembershipRequest();
+            if (!isNew)
             {
-                FullAddress = requestModel.FullAddress,
-                Name = requestModel.FullName,
-                BirthDay = requestModel.BirthDate,
-                EmailAddress = requestModel.EmailAddress,
-                EmiratesIdNumber = requestModel.EmiratesIdNumber,
-                GenderId = (int)requestModel.GenderId,
-                LocationId = requestModel.LocationId,
-                NationId = requestModel.NationId,
-                Occupation = requestModel.Occupation,
-                PassportNumber = requestModel.PassportNumber,
-                ReligionId = requestModel.ReligionId,
-                VisaResidency = requestModel.VisaResidency,
-                AuthorizationLetterUrl = requestModel.AuthorizationLetterUrl,
-                EmiratesIdBackUrl = requestModel.EmiratesIdBackUrl,
-                EmiratesIdFrontUrl = requestModel.EmiratesIdFrontUrl,
-                PassportAttachementUrl = requestModel.PassportAttachementUrl,
-                ProfilePhotoUrl = requestModel.ProfilePhotoUrl,
-                RequestCategory = (int)requestModel.RequestCategory,
-                PhoneNumber = requestModel.PhoneNumber
+                membership = await appContext.MembershipRequests.FindAsync(requestModel.MembershipRequestId);
+            }
 
-            };
+            membership.FullAddress = requestModel.FullAddress;
+            membership.Name = requestModel.FullName;
+            membership.BirthDay = requestModel.BirthDate;
+            membership.EmailAddress = requestModel.EmailAddress;
+            membership.EmiratesIdNumber = requestModel.EmiratesIdNumber;
+            membership.GenderId = (int)requestModel.GenderId;
+            membership.LocationId = requestModel.LocationId;
+            membership.NationId = requestModel.NationId;
+            membership.Occupation = requestModel.Occupation;
+            membership.PassportNumber = requestModel.PassportNumber;
+            membership.ReligionId = requestModel.ReligionId;
+            membership.VisaResidency = requestModel.VisaResidency;
+            membership.AuthorizationLetterUrl = requestModel.AuthorizationLetterUrl;
+            membership.EmiratesIdBackUrl = requestModel.EmiratesIdBackUrl;
+            membership.EmiratesIdFrontUrl = requestModel.EmiratesIdFrontUrl;
+            membership.PassportAttachementUrl = requestModel.PassportAttachementUrl;
+            membership.ProfilePhotoUrl = requestModel.ProfilePhotoUrl;
+            membership.RequestCategory = (int)requestModel.RequestCategory;
+            membership.TypeOfCustomer = (int)requestModel.TypeOfCustomer;
+            membership.PhoneNumber = requestModel.PhoneNumber;
 
-            appContext.MembershipRequests.Add(membershipRequest);
+            if (isNew)
+            {
+                appContext.MembershipRequests.Add(membership);
+
+            }
+            else
+            {
+                appContext.MembershipRequests.Update(membership);
+            }
+
             await appContext.SaveChangesAsync();
-            return membershipRequest.MembershipRequestId;
 
+
+            return membership;
         }
 
         public async Task<MembershipRequest> GetRequest(int membershipId)

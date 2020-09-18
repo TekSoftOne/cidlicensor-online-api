@@ -9,6 +9,7 @@ namespace OR.Data
         public MapperProfile()
         {
             CreateMap<MembershipRequest, MembershipRequestModel>();
+            CreateMap<MembershipRequest, MembershipRequestResultModel>();
         }
     }
 }

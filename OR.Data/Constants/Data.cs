@@ -3,7 +3,7 @@ namespace OR.Data.Constants
 {
     public class Data
     {
-        public enum CustomerType
+        public enum TypeOfCustomer
         {
             Resident = 1,
             Diplomat = 2,

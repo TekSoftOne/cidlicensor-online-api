@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using static OR.Data.Constants.Data;
 
 namespace OR.Data
 {
@@ -38,6 +39,7 @@ namespace OR.Data
         public string EmailAddress { get; set; }//T
         public int RequestCategory { get; set; }
         public string PhoneNumber { get; set; }
+        public int TypeOfCustomer { get; set; }
 
     }
 }
