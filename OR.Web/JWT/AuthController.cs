@@ -46,7 +46,7 @@ namespace OR.Web
             var identity = await GetClaimsIdentity(phoneNumber, password);
             if (identity == null)
             {
-                return BadRequest("Invalid username or password.");
+                return BadRequest("Invalid phone number or password.");
             }
 
             // get the user to verifty
