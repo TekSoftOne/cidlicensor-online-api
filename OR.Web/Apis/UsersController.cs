@@ -16,6 +16,7 @@ namespace OR.Web
         public string FullName { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
+        public string PhoneNumber { get; set; }
     }
 
     [Route("api/[controller]")]
@@ -45,7 +46,8 @@ namespace OR.Web
             var result = await _userManager.CreateAsync(new IdentityUser
             {
                 Email = userModel.Email,
-                UserName = userModel.UserName,
+                UserName = userModel.PhoneNumber,
+
             }, userModel.Password);
 
             return new OkObjectResult(result);

@@ -16,7 +16,8 @@ namespace OR.Web
 {
     public class UserCredentialModel
     {
-        public string UserName { get; set; }
+        public string PhoneNumber { get; set; }
+        public string Email { get; set; }
         public string Password { get; set; }
     }
 
@@ -38,17 +39,18 @@ namespace OR.Web
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] UserCredentialModel userCredentials)
         {
-            string userName = userCredentials.UserName;
+            string phoneNumber = userCredentials.PhoneNumber;
+            string email = userCredentials.Email;
             string password = userCredentials.Password;
 
-            var identity = await GetClaimsIdentity(userName, password);
+            var identity = await GetClaimsIdentity(phoneNumber, password);
             if (identity == null)
             {
                 return BadRequest("Invalid username or password.");
             }
 
             // get the user to verifty
-            var userToVerify = await _userManager.FindByNameAsync(userName);
+            var userToVerify = await _userManager.FindByNameAsync(phoneNumber);
 
             /// ===== Generate JWT =====
             // Set the timespan the token will be valid for (default is 120 min)
@@ -57,8 +59,8 @@ namespace OR.Web
             var userToken = new
             {
                 id = identity.Claims.Single(c => c.Type == "Id").Value,
-                auth_token = GenerateEncodedToken(userName, identity.FindFirst("Id"), validFor),
-                email = userName,
+                auth_token = GenerateEncodedToken(phoneNumber, identity.FindFirst("Id"), validFor),
+                email = phoneNumber,
                 expires_in = validFor.TotalSeconds
             };
             /// ===== END Generate JWT =====
@@ -121,6 +123,30 @@ namespace OR.Web
             if (await _userManager.CheckPasswordAsync(userToVerify, password))
             {
                 return new ClaimsIdentity(new GenericIdentity(userName, "Token"), new[]
+                {
+                    new Claim("Id", userToVerify.Id),
+                });
+
+            }
+
+            // Credentials are invalid, or account doesn't exist
+            return await Task.FromResult<ClaimsIdentity>(null);
+        }
+
+        private async Task<ClaimsIdentity> GetClaimsIdentityByEmail(string email, string password)
+        {
+            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
+                return await Task.FromResult<ClaimsIdentity>(null);
+
+            // get the user to verifty by Phone number
+            var userToVerify = _userManager.Users.Where(u => u.Email == email).FirstOrDefault();
+
+            if (userToVerify == null) return await Task.FromResult<ClaimsIdentity>(null);
+
+            // check the credentials and add claims
+            if (await _userManager.CheckPasswordAsync(userToVerify, password))
+            {
+                return new ClaimsIdentity(new GenericIdentity(userToVerify.UserName, "Token"), new[]
                 {
                     new Claim("Id", userToVerify.Id),
                 });
