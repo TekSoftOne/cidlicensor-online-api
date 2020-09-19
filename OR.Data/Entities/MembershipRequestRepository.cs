@@ -36,7 +36,7 @@ namespace OR.Data
             membership.GenderId = (int)requestModel.GenderId;
             membership.LocationId = requestModel.LocationId;
             membership.NationId = requestModel.NationId;
-            membership.Occupation = requestModel.Occupation;
+            membership.Address = requestModel.Address;
             membership.PassportNumber = requestModel.PassportNumber;
             membership.ReligionId = requestModel.ReligionId;
             membership.VisaResidency = requestModel.VisaResidency;
@@ -48,6 +48,8 @@ namespace OR.Data
             membership.RequestCategory = (int)requestModel.RequestCategory;
             membership.TypeOfCustomer = (int)requestModel.TypeOfCustomer;
             membership.PhoneNumber = requestModel.PhoneNumber;
+            membership.AreaId = requestModel.AreaId;
+            membership.AgentId = requestModel.AgentId;
 
             if (isNew)
             {

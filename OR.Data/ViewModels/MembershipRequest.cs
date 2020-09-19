@@ -19,7 +19,7 @@ namespace OR.Data.ViewModels
         public RequestCategory RequestCategory { get; set; }
         public TypeOfCustomer TypeOfCustomer { get; set; }
 
-        public string Occupation { get; set; }//T -- //
+        public string Address { get; set; }//T -- //
         public int VisaResidency { get; set; }
         public string PassportNumber { get; set; }//T
 
@@ -40,6 +40,8 @@ namespace OR.Data.ViewModels
         public string Email { get; set; }//T
         public string PhoneNumber { get; set; }
         public int ApplicationNumber { get; set; }
+        public string AreaId { get; set; }
+        public int AgentId { get; set; }
     }
 
     public class MembershipRequestResultModel
@@ -56,7 +58,7 @@ namespace OR.Data.ViewModels
         public string RequestCategory { get; set; }
         public string TypeOfCustomer { get; set; }
 
-        public string Occupation { get; set; }//T -- //
+        public string Address { get; set; }//T -- //
         public int VisaResidency { get; set; }
         public string PassportNumber { get; set; }//T
 
@@ -77,5 +79,7 @@ namespace OR.Data.ViewModels
         public string Email { get; set; }//T
         public string PhoneNumber { get; set; }
         public int ApplicationNumber { get; set; }
+        public string AreaId { get; set; }
+        public int AgentId { get; set; }
     }
 }

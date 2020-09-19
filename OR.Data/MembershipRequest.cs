@@ -19,7 +19,7 @@ namespace OR.Data
         public int NationId { get; set; }//T
         public int ReligionId { get; set; }//K
         [MaxLength(250)]
-        public string Occupation { get; set; }//T -- //
+        public string Address { get; set; }//T -- //
         public int VisaResidency { get; set; }
         [MaxLength(250)]
         public string EmiratesIDNumber { get; set; }
@@ -40,6 +40,8 @@ namespace OR.Data
         public int RequestCategory { get; set; }
         public string PhoneNumber { get; set; }
         public int TypeOfCustomer { get; set; }
+        public string AreaId { get; set; }
+        public int AgentId { get; set; }
 
     }
 }
