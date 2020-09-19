@@ -42,6 +42,8 @@ namespace OR.Data
         public int TypeOfCustomer { get; set; }
         public string AreaId { get; set; }
         public int AgentId { get; set; }
+        public int MembershipId { get; set; }
+        public string MembershipNumber { get; set; }
 
     }
 }

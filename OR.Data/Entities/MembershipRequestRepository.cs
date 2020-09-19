@@ -50,6 +50,8 @@ namespace OR.Data
             membership.PhoneNumber = requestModel.PhoneNumber;
             membership.AreaId = requestModel.AreaId;
             membership.AgentId = requestModel.AgentId;
+            membership.MembershipId = requestModel.MembershipId;
+            membership.MembershipNumber = requestModel.MembershipNumber;
 
             if (isNew)
             {
