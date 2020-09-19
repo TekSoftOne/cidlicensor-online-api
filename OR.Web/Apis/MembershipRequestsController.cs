@@ -16,6 +16,7 @@ namespace OR.Web.Apis
     public class MembershipUpdateModel
     {
         public string MembershipNumber { get; set; }
+        public int MembershipId { get; set; }
         public string Status { get; set; }
     }
 
@@ -41,7 +42,6 @@ namespace OR.Web.Apis
         {
             return new OkObjectResult("Success");
         }
-
 
         [HttpPost("Update")]
         public async Task<IActionResult> CreateOrUpdateRequest([FromForm] MembershipRequestModel requestModel)
