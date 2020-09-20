@@ -15,7 +15,7 @@ namespace OR.Data
         public string FullName { get; set; }//T
         public int LocationId { get; set; }//T
         public int GenderId { get; set; }//T
-        public DateTime BirthDay { get; set; }//T
+        public DateTime BirthDate { get; set; }//T
         public int NationId { get; set; }//T
         public int ReligionId { get; set; }//K
         [MaxLength(250)]

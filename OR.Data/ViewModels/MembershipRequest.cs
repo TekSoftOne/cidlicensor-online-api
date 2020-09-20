@@ -13,7 +13,7 @@ namespace OR.Data.ViewModels
         public int MembershipRequestId { get; set; }
         public int LocationId { get; set; }//T
         public Gender GenderId { get; set; }//T
-        public DateTime BirthDay { get; set; }//T
+        public DateTime BirthDate { get; set; }//T
         public int NationId { get; set; }//T
         public int ReligionId { get; set; }//K
         public RequestCategory RequestCategory { get; set; }
@@ -54,7 +54,7 @@ namespace OR.Data.ViewModels
         public int MembershipRequestId { get; set; }
         public int LocationId { get; set; }//T
         public Gender GenderId { get; set; }//T
-        public DateTime BirthDay { get; set; }//T
+        public DateTime BirthDate { get; set; }//T
         public int NationId { get; set; }//T
         public int ReligionId { get; set; }//K
         public string RequestCategory { get; set; }
