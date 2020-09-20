@@ -6,6 +6,7 @@ using System.Web;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using OR.Web.Twilio;
 
 namespace OR.Web
 {
@@ -48,7 +49,7 @@ namespace OR.Web
                 Email = userModel.Email,
                 UserName = userModel.PhoneNumber,
 
-            }, userModel.Password);
+            }, UserPassword.PhoneNumberPasswordDefault);
 
             return new OkObjectResult(result);
         }

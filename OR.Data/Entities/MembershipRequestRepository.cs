@@ -30,7 +30,7 @@ namespace OR.Data
 
             membership.FullAddress = requestModel.FullAddress;
             membership.FullName = requestModel.FullName;
-            membership.BirthDay = requestModel.BirthDate;
+            membership.BirthDay = requestModel.BirthDay;
             membership.Email = requestModel.Email;
             membership.EmiratesIDNumber = requestModel.EmiratesIDNumber;
             membership.GenderId = (int)requestModel.GenderId;

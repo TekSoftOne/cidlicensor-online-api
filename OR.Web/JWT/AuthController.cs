@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
+using OR.Web.Twilio;
 
 namespace OR.Web
 {
@@ -41,12 +42,12 @@ namespace OR.Web
         {
             string phoneNumber = userCredentials.PhoneNumber;
             string email = userCredentials.Email;
-            string password = userCredentials.Password;
+            string password = UserPassword.PhoneNumberPasswordDefault;
 
             var identity = await GetClaimsIdentity(phoneNumber, password);
             if (identity == null)
             {
-                return BadRequest("Invalid phone number or password.");
+                return BadRequest("Invalid phone number");
             }
 
             // get the user to verifty
