@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
@@ -11,6 +12,7 @@ namespace OR.Web.Apis
     public class ApplicationSearchModel
     {
         public int ApplicationNumber { get; set; }
+        public string PhoneNumber { get; set; }
     }
 
     public class MembershipUpdateModel
@@ -38,9 +40,18 @@ namespace OR.Web.Apis
         }
 
         [HttpPost("status")]
-        public async Task<IActionResult> UpdateStatus([FromBody] MembershipUpdateModel status)
+        public async Task<IActionResult> UpdateStatus([FromBody] MembershipUpdateModel statusModel)
         {
-            return new OkObjectResult("Success");
+            try
+            {
+                await _dbContext.MembershipRequests.UpdateStatus(statusModel.MembershipNumber, statusModel.Status);
+
+                return new OkObjectResult("Success");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
         }
 
         [HttpPost("Update")]
@@ -91,7 +102,7 @@ namespace OR.Web.Apis
 
                 if (isNew)
                 {
-
+                    requestModel.Status = Status.Pending;
                     applicationId = await _dbContext.Applications.CreateApplication(membership.MembershipRequestId);
                     emailSubject = "Hello from Online Request";
                     emailBody = $"Hello {customerName}, your application number is {applicationId}, please use this to...";
@@ -122,6 +133,11 @@ namespace OR.Web.Apis
                 var request = await _dbContext.MembershipRequests.GetRequest(app.MembershipId);
 
                 var applicationiRequest = _mapper.Map<MembershipRequestResultModel>(request);
+
+                if (applicationiRequest?.PhoneNumber != appSearch.PhoneNumber)
+                {
+                    return BadRequest(new Exception("Request not found!"));
+                }
 
                 applicationiRequest.ApplicationNumber = app.ApplicationNumber;
                 applicationiRequest.TypeOfCustomer = ((TypeOfCustomer)int.Parse(applicationiRequest.TypeOfCustomer)).ToString();

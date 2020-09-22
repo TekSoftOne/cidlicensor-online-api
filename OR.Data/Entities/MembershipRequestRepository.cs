@@ -3,6 +3,11 @@ using System.Linq;
 using OR.Data.ViewModels;
 using OR.CloudStorage;
 using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+using System;
+using static OR.Data.Constants.Data;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace OR.Data
 {
@@ -72,6 +77,28 @@ namespace OR.Data
         public async Task<MembershipRequest> GetRequest(int membershipId)
         {
             return await appContext.MembershipRequests.FindAsync(membershipId);
+        }
+
+        public async Task<IEnumerable<MembershipRequest>> GetMemberships(string membershipNumber)
+        {
+            return await appContext.MembershipRequests.Where(m => m.MembershipNumber == membershipNumber).ToListAsync();
+        }
+
+        public async Task<bool> UpdateStatus(string membershipNumber, string status)
+        {
+            var memberships = await GetMemberships(membershipNumber);
+            if (memberships != null)
+            {
+                foreach (var membership in memberships)
+                {
+                    membership.Status = (int)Enum.Parse(typeof(Status), status);
+                    appContext.MembershipRequests.Update(membership);
+                }
+
+                await appContext.SaveChangesAsync();
+            }
+
+            return true;
         }
     }
 }

@@ -22,5 +22,13 @@ namespace OR.Data.Constants
             Renewal = 2,
             Replacement = 3
         }
+
+        public enum Status
+        {
+            New = 1,
+            Pending = 2,
+            Rejected = 3,
+            Approved = 4
+        }
     }
 }

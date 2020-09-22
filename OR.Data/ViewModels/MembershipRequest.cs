@@ -44,6 +44,7 @@ namespace OR.Data.ViewModels
         public int AgentId { get; set; }
         public int MembershipId { get; set; }
         public string MembershipNumber { get; set; }
+        public Status Status { get; set; }
     }
 
     public class MembershipRequestResultModel
@@ -85,5 +86,6 @@ namespace OR.Data.ViewModels
         public int AgentId { get; set; }
         public int MembershipId { get; set; }
         public string MembershipNumber { get; set; }
+        public Status Status { get; set; }
     }
 }

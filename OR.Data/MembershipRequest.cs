@@ -44,6 +44,7 @@ namespace OR.Data
         public int AgentId { get; set; }
         public int MembershipId { get; set; }
         public string MembershipNumber { get; set; }
+        public int Status { get; set; }
 
     }
 }
