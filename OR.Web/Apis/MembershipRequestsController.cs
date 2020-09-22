@@ -129,6 +129,10 @@ namespace OR.Web.Apis
             try
             {
                 var app = await _dbContext.Applications.GetApplication(appSearch.ApplicationNumber);
+                if (app == null)
+                {
+                    return BadRequest(new Exception("Request not found!"));
+                }
 
                 var request = await _dbContext.MembershipRequests.GetRequest(app.MembershipId);
 
@@ -136,7 +140,7 @@ namespace OR.Web.Apis
 
                 if (applicationiRequest?.PhoneNumber != appSearch.PhoneNumber)
                 {
-                    return BadRequest(new Exception("Request not found!"));
+                    return BadRequest(new Exception("This application number is not belong to the current phone number!"));
                 }
 
                 applicationiRequest.ApplicationNumber = app.ApplicationNumber;
