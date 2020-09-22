@@ -33,7 +33,7 @@ namespace OR.Data
             membership.BirthDate = requestModel.BirthDate;
             membership.Email = requestModel.Email;
             membership.EmiratesIDNumber = requestModel.EmiratesIDNumber;
-            membership.GenderId = (int)requestModel.GenderId;
+            membership.Gender = (int)requestModel.Gender;
             membership.LocationId = requestModel.LocationId;
             membership.NationId = requestModel.NationId;
             membership.Address = requestModel.Address;

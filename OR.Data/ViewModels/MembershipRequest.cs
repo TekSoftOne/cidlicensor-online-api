@@ -12,7 +12,7 @@ namespace OR.Data.ViewModels
         public string EmiratesIDNumber { get; set; }
         public int MembershipRequestId { get; set; }
         public int LocationId { get; set; }//T
-        public Gender GenderId { get; set; }//T
+        public Gender Gender { get; set; }//T
         public DateTime BirthDate { get; set; }//T
         public int NationId { get; set; }//T
         public int ReligionId { get; set; }//K
@@ -53,7 +53,7 @@ namespace OR.Data.ViewModels
         public string EmiratesIDNumber { get; set; }
         public int MembershipRequestId { get; set; }
         public int LocationId { get; set; }//T
-        public Gender GenderId { get; set; }//T
+        public Gender Gender { get; set; }//T
         public DateTime BirthDate { get; set; }//T
         public int NationId { get; set; }//T
         public int ReligionId { get; set; }//K
