@@ -115,7 +115,7 @@ namespace OR.Web.Apis
                 }
 
                 var membership = await _dbContext.MembershipRequests.UpdateMembership(requestModel);
-                var applicationId = 0;
+                var applicationId = requestModel.ApplicationNumber;
 
                 var emailSubject = "";
                 var emailBody = "";
@@ -127,13 +127,13 @@ namespace OR.Web.Apis
                 {
                     requestModel.Status = Status.Pending;
                     applicationId = await _dbContext.Applications.CreateApplication(membership.MembershipRequestId);
-                    emailSubject = "Hello from Online Request";
-                    emailBody = $"Hello {customerName}, your application number is {applicationId}, please use this to...";
+                    emailSubject = "Online Request - Application Creation";
+                    emailBody = $"Hi {customerName}, your application number is {applicationId}, please use this to...";
                 }
                 else
                 {
-                    emailSubject = "Update application success!";
-                    emailBody = $"Hello {customerName}, You 've updated successfully information... for {applicationId}!";
+                    emailSubject = "Online Request - Application Update";
+                    emailBody = $"Hi {customerName}, You 've updated successfully information... for application number {applicationId}!";
                 }
 
                 var email = Mailing.CreateEmail(customerEmail, emailSubject, emailBody);
