@@ -57,6 +57,7 @@ namespace OR.Data
             membership.AgentId = requestModel.AgentId;
             membership.MembershipId = requestModel.MembershipId;
             membership.MembershipNumber = requestModel.MembershipNumber;
+            membership.Status = (int)requestModel.Status;
 
             if (isNew)
             {

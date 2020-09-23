@@ -26,9 +26,9 @@ namespace OR.Data.Constants
         public enum Status
         {
             New = 1,
-            Pending = 2,
+            Approved = 2,
             Rejected = 3,
-            Approved = 4
+            Pending = 4
         }
     }
 }
