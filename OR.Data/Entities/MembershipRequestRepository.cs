@@ -84,6 +84,11 @@ namespace OR.Data
             return await appContext.MembershipRequests.Where(m => m.MembershipNumber == membershipNumber).ToListAsync();
         }
 
+        public async Task<MembershipRequest> GetMembership(string membershipNumber)
+        {
+            return await appContext.MembershipRequests.Where(m => m.MembershipNumber == membershipNumber).FirstOrDefaultAsync();
+        }
+
         public async Task<bool> UpdateStatus(string membershipNumber, string status)
         {
             var memberships = await GetMemberships(membershipNumber);

@@ -44,7 +44,27 @@ namespace OR.Web.Apis
         {
             try
             {
+                var membership = await _dbContext.MembershipRequests.GetMembership(statusModel.MembershipNumber);
+                if (membership == null)
+                {
+                    return BadRequest(new Exception("Can not find this membership!"));
+                }
+
+                var app = await _dbContext.Applications.GetApplication(membership.MembershipRequestId);
+
+                if (app == null)
+                {
+                    return BadRequest(new Exception("Can not find application of this membership!"));
+                }
+
                 await _dbContext.MembershipRequests.UpdateStatus(statusModel.MembershipNumber, statusModel.Status);
+
+
+                var emailSubject = "Update application success!";
+                var emailBody = $"Hello {membership.FullName}, your application number ${app.ApplicationNumber} has been ${statusModel.Status}";
+
+                var email = Mailing.CreateEmail(membership.Email, emailSubject, emailBody);
+                Mailing.Send(email);
 
                 return new OkObjectResult("Success");
             }
