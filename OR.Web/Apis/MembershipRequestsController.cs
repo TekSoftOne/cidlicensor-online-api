@@ -60,8 +60,8 @@ namespace OR.Web.Apis
                 await _dbContext.MembershipRequests.UpdateStatus(statusModel.MembershipNumber, statusModel.Status);
 
 
-                var emailSubject = "Update application success!";
-                var emailBody = $"Hello {membership.FullName}, your application number ${app.ApplicationNumber} has been ${statusModel.Status}";
+                var emailSubject = "Application Updates!";
+                var emailBody = $"Hello {membership.FullName}, your application number {app.ApplicationNumber} status was changed to: {statusModel.Status}";
 
                 var email = Mailing.CreateEmail(membership.Email, emailSubject, emailBody);
                 Mailing.Send(email);
