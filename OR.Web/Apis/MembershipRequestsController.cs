@@ -59,12 +59,15 @@ namespace OR.Web.Apis
 
                 await _dbContext.MembershipRequests.UpdateStatus(statusModel.MembershipNumber, statusModel.Status);
 
+                if (statusModel.Status != "APPROVED_BY_AGENT_WAITING_FOR_ADMIN")
+                {
+                    var emailSubject = "Application Updates!";
+                    var emailBody = $"Hello {membership.FullName}, your application number {app.ApplicationNumber} status was changed to: {statusModel.Status}";
 
-                var emailSubject = "Application Updates!";
-                var emailBody = $"Hello {membership.FullName}, your application number {app.ApplicationNumber} status was changed to: {statusModel.Status}";
+                    var email = Mailing.CreateEmail(membership.Email, emailSubject, emailBody);
+                    Mailing.Send(email);
+                }
 
-                var email = Mailing.CreateEmail(membership.Email, emailSubject, emailBody);
-                Mailing.Send(email);
 
                 return new OkObjectResult("Success");
             }
