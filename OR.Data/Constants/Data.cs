@@ -27,7 +27,8 @@ namespace OR.Data.Constants
         {
             Approved = 2,
             Rejected = 3,
-            Pending = 4
+            Pending = 4,
+            APPROVED_BY_AGENT_WAITING_FOR_ADMIN = 11
         }
     }
 }
