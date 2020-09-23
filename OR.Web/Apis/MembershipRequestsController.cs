@@ -50,7 +50,7 @@ namespace OR.Web.Apis
                     return BadRequest(new Exception("Can not find this membership!"));
                 }
 
-                var app = await _dbContext.Applications.GetApplication(membership.MembershipRequestId);
+                var app = await _dbContext.Applications.GetApplicationByMembership(membership.MembershipRequestId);
 
                 if (app == null)
                 {

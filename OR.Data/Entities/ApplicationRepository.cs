@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
 using OR.Data.Interfaces;
-
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
 namespace OR.Data.Entities
 {
     public class ApplicationRepository : Repository<Application>, IApplicationRepository
@@ -25,6 +26,11 @@ namespace OR.Data.Entities
         public async Task<Application> GetApplication(int applicationNumber)
         {
             return await appContext.Applications.FindAsync(applicationNumber);
+        }
+
+        public async Task<Application> GetApplicationByMembership(int membershipId)
+        {
+            return await appContext.Applications.Where(a => a.MembershipId == membershipId).FirstOrDefaultAsync();
         }
     }
 

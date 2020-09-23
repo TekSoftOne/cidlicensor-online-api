@@ -7,5 +7,6 @@ namespace OR.Data.Interfaces
     {
         Task<int> CreateApplication(int membershipId);
         Task<Application> GetApplication(int applicationNumber);
+        Task<Application> GetApplicationByMembership(int membershipId);
     }
 }

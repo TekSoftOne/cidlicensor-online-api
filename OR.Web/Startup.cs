@@ -110,6 +110,11 @@ namespace OR.Web
 
             services.AddCors(options => options.AddPolicy(_corsAllowList, p => p.WithOrigins(
                 "http://localhost:4900",
+                 "http://localhost:5000",
+                 "http://wms-test.cidlicensor.com",
+                 "https://wms-test.cidlicensor.com",
+                 "http://wms.cidlicensor.com",
+                 "https://wms.cidlicensor.com",
                 "http://onlinerequest-api.cidlicensor.support",
                 "https://onlinerequest-api.cidlicensor.support",
                 "http://onlinerequest.cidlicensor.support",
