@@ -161,10 +161,11 @@ namespace OR.Web.Apis
 
                 var applicationiRequest = _mapper.Map<MembershipRequestResultModel>(request);
 
-                if (applicationiRequest?.PhoneNumber != appSearch.PhoneNumber)
-                {
-                    return BadRequest(new Exception("This application number is not belong to the current phone number!"));
-                }
+                //remove this check for now as of Farhal confirmation about "There are some business gaps and we will keep allow them to use any number and go for renewal/replacement"
+                //if (applicationiRequest?.PhoneNumber != appSearch.PhoneNumber)
+                //{
+                //    return BadRequest(new Exception("This application number is not belong to the current phone number!"));
+                //}
 
                 applicationiRequest.ApplicationNumber = app.ApplicationNumber;
                 applicationiRequest.TypeOfCustomer = ((TypeOfCustomer)int.Parse(applicationiRequest.TypeOfCustomer)).ToString();
