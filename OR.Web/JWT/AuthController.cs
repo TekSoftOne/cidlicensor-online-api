@@ -54,8 +54,8 @@ namespace OR.Web
             var userToVerify = await _userManager.FindByNameAsync(phoneNumber);
 
             /// ===== Generate JWT =====
-            // Set the timespan the token will be valid for (default is 120 min)
-            var validFor = TimeSpan.FromDays(2);
+            // Set the timespan the token will be valid for (default is 2 min)
+            var validFor = TimeSpan.FromMinutes(1);
 
             var userToken = new
             {

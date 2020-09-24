@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OR.CloudStorage;
 using OR.Data;
@@ -78,6 +79,7 @@ namespace OR.Web.Apis
         }
 
         [HttpPost("Update")]
+        [Authorize]
         public async Task<IActionResult> CreateOrUpdateRequest([FromForm] MembershipRequestModel requestModel)
         {
 
@@ -147,6 +149,7 @@ namespace OR.Web.Apis
         }
 
         [HttpPost("search")]
+        [Authorize]
         public async Task<IActionResult> SearchRequest([FromBody] ApplicationSearchModel appSearch)
         {
             try
