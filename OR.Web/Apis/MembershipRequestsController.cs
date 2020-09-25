@@ -79,7 +79,7 @@ namespace OR.Web.Apis
         }
 
         [HttpPost("Update")]
-        [Authorize]
+
         public async Task<IActionResult> CreateOrUpdateRequest([FromForm] MembershipRequestModel requestModel)
         {
 

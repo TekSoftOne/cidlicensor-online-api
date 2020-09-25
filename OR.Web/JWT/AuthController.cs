@@ -55,7 +55,7 @@ namespace OR.Web
 
             /// ===== Generate JWT =====
             // Set the timespan the token will be valid for (default is 2 min)
-            var validFor = TimeSpan.FromMinutes(1);
+            var validFor = TimeSpan.FromMinutes(20);
 
             var userToken = new
             {
