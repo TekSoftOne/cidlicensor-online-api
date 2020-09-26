@@ -111,7 +111,7 @@ namespace OR.Web
             services.AddCors(options => options.AddPolicy(_corsAllowList, p => p.WithOrigins(
                 "http://localhost:4900",
                  "https://localhost:4900",
-                 "https://local.officeatwork365.com:4900",
+                 "https://local.teksoft1.com:4900",
                  "http://localhost:5000",
                  "http://wms-test.cidlicensor.com",
                  "https://wms-test.cidlicensor.com",
