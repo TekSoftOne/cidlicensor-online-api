@@ -20,21 +20,21 @@ namespace OR.Web.Apis
 
     public class OrderRequestBody
     {
-        public string Action { get; set; }
-        public AmountModel Amount { get; set; }
-        public MerchantAttributes MerchantAttributes { get; set; }
+        public string action { get; set; }
+        public AmountModel amount { get; set; }
+        public MerchantAttributes merchantAttributes { get; set; }
     }
 
     public class AmountModel
     {
-        public string CurrencyCode { get; set; }
-        public double Value { get; set; }
+        public string currencyCode { get; set; }
+        public double value { get; set; }
     }
 
     public class MerchantAttributes
     {
-        public string MaskPaymentInfo { get; set; }
-        public string RedirectUrl { get; set; }
+        public string maskPaymentInfo { get; set; }
+        public string redirectUrl { get; set; }
     }
 
     [Route("api/[controller]")]
@@ -76,7 +76,7 @@ namespace OR.Web.Apis
             {
                 var ngeniousGateway = "https://api-gateway.sandbox.ngenius-payments.com";
                 var outlet = "47294c75-de03-41eb-8a80-0462e0c7c99a";
-                var gatewayOrderUrl = $"{ngeniousGateway}/transactions/outlets/${outlet}/orders";
+                var gatewayOrderUrl = $"{ngeniousGateway}/transactions/outlets/{outlet}/orders";
                 var client = new RestClient($"{ngeniousGateway}/transactions/outlets/{outlet}/orders");
                 client.Timeout = -1;
                 var request = new RestRequest(Method.POST);
