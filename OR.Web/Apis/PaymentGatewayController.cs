@@ -35,6 +35,7 @@ namespace OR.Web.Apis
     {
         public string maskPaymentInfo { get; set; }
         public string redirectUrl { get; set; }
+        public bool skipConfirmationPage { get; set; }
     }
 
     [Route("api/[controller]")]
