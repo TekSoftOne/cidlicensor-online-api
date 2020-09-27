@@ -38,6 +38,12 @@ namespace OR.Web.Apis
         public bool skipConfirmationPage { get; set; }
     }
 
+    public class OrderDetailRequestModel
+    {
+        public string OrderRef { get; set; }
+        public string Token { get; set; }
+    }
+
     [Route("api/[controller]")]
     [ApiController]
     public class PaymentGatewayController : ControllerBase
@@ -93,6 +99,27 @@ namespace OR.Web.Apis
                 return BadRequest(ex);
             }
 
+        }
+
+        public IActionResult GetOrderDetail([FromBody] OrderDetailRequestModel orderDetailRequestModel)
+        {
+            try
+            {
+                var ngeniousGateway = "https://api-gateway.sandbox.ngenius-payments.com";
+                var outlet = "47294c75-de03-41eb-8a80-0462e0c7c99a";
+                var gatewayOrderDetailUrl = $"{ngeniousGateway}/transactions/outlets/{outlet}/orders/{orderDetailRequestModel.OrderRef}";
+                var client = new RestClient(gatewayOrderDetailUrl);
+                client.Timeout = -1;
+                var request = new RestRequest(Method.GET);
+                request.AddHeader("Accept", "application/vnd.ni-payment.v2+json");
+                request.AddHeader("Authorization", $"Bearer {orderDetailRequestModel.Token}");
+                IRestResponse response = client.Execute(request);
+                return new OkObjectResult(response.Content);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
         }
     }
 }
