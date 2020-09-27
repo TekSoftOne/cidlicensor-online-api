@@ -45,6 +45,8 @@ namespace OR.Data.ViewModels
         public int MembershipId { get; set; }
         public string MembershipNumber { get; set; }
         public Status Status { get; set; }
+        public string OrderRef { get; set; }
+        public string PaymentType { get; set; }
     }
 
     public class MembershipRequestResultModel
@@ -87,5 +89,7 @@ namespace OR.Data.ViewModels
         public int MembershipId { get; set; }
         public string MembershipNumber { get; set; }
         public Status Status { get; set; }
+        public string OrderRef { get; set; }
+        public string PaymentType { get; set; }
     }
 }

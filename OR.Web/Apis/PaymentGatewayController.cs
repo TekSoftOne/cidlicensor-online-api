@@ -101,6 +101,7 @@ namespace OR.Web.Apis
 
         }
 
+        [HttpPost("OrderDetail")]
         public IActionResult GetOrderDetail([FromBody] OrderDetailRequestModel orderDetailRequestModel)
         {
             try

@@ -45,6 +45,10 @@ namespace OR.Data
         public int MembershipId { get; set; }
         public string MembershipNumber { get; set; }
         public int Status { get; set; }
+        [MaxLength(250)]
+        public string OrderRef { get; set; }
+        [MaxLength(50)]
+        public string PaymentType { get; set; }
 
     }
 }

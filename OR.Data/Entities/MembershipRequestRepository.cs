@@ -58,6 +58,8 @@ namespace OR.Data
             membership.MembershipId = requestModel.MembershipId;
             membership.MembershipNumber = requestModel.MembershipNumber;
             membership.Status = (int)requestModel.Status;
+            membership.PaymentType = requestModel.PaymentType;
+            membership.OrderRef = requestModel.OrderRef;
 
             if (isNew)
             {
