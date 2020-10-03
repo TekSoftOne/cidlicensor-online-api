@@ -92,10 +92,10 @@ namespace OR.Web.Apis
                     requestModel.PassportAttachementUrl = await _requestStorageManager.UploadDocument(requestModel.EmiratesIDNumber, "passport", requestModel.PassportAttachement);
                 }
 
-                if (requestModel.ProfilePhoto != null)
+                if (requestModel.ProfilePic != null)
                 {
                     //upload file
-                    requestModel.ProfilePhotoUrl = await _requestStorageManager.UploadDocument(requestModel.EmiratesIDNumber, "profilePhoto", requestModel.ProfilePhoto);
+                    requestModel.ProfilePic = requestModel.ProfilePic;
                 }
 
                 if (requestModel.AuthorizationLetter != null)

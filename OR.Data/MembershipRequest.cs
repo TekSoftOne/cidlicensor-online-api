@@ -26,7 +26,7 @@ namespace OR.Data
         [MaxLength(250)]
         public string PassportNumber { get; set; }//T
         [MaxLength(250)]
-        public string ProfilePhotoUrl { get; set; }//T
+        public string ProfilePic { get; set; }//T
 
         public string EmiratesIdBackUrl { get; set; }//T
 

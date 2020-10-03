@@ -49,7 +49,7 @@ namespace OR.Data
             membership.EmiratesIdBackUrl = requestModel.EmiratesIdBackUrl;
             membership.EmiratesIdFrontUrl = requestModel.EmiratesIdFrontUrl;
             membership.PassportAttachementUrl = requestModel.PassportAttachementUrl;
-            membership.ProfilePhotoUrl = requestModel.ProfilePhotoUrl;
+            membership.ProfilePic = requestModel.ProfilePic;
             membership.RequestCategory = (int)requestModel.RequestCategory;
             membership.TypeOfCustomer = (int)requestModel.TypeOfCustomer;
             membership.PhoneNumber = requestModel.PhoneNumber;

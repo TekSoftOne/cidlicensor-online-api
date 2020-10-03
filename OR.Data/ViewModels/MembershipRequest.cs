@@ -23,7 +23,7 @@ namespace OR.Data.ViewModels
         public int VisaResidency { get; set; }
         public string PassportNumber { get; set; }//T
 
-        public IFormFile ProfilePhoto { get; set; }//T
+        public string ProfilePic { get; set; }//T
 
         public IFormFile EmiratesIdBack { get; set; }//T
 
@@ -32,7 +32,7 @@ namespace OR.Data.ViewModels
         public IFormFile AuthorizationLetter { get; set; }//
 
         public IFormFile PassportAttachement { get; set; }//T
-        public string ProfilePhotoUrl { get; set; }//T
+
         public string EmiratesIdBackUrl { get; set; }//T
         public string EmiratesIdFrontUrl { get; set; }//
         public string AuthorizationLetterUrl { get; set; }//
@@ -67,7 +67,7 @@ namespace OR.Data.ViewModels
         public int VisaResidency { get; set; }
         public string PassportNumber { get; set; }//T
 
-        public IFormFile ProfilePhoto { get; set; }//T
+        public string ProfilePic { get; set; }//T
 
         public IFormFile EmiratesIdBack { get; set; }//T
 
