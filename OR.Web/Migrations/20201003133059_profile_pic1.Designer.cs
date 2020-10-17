@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OR.Data;
 
 namespace OR.Web.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201003133059_profile_pic1")]
+    partial class profile_pic1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -259,9 +261,6 @@ namespace OR.Web.Migrations
                     b.Property<DateTime>("BirthDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Comment")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(250)")
                         .HasMaxLength(250);
@@ -333,12 +332,6 @@ namespace OR.Web.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("VisaResidency")
-                        .HasColumnType("int");
-
-                    b.Property<int>("monthlyQuotaId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("monthlySalaryId")
                         .HasColumnType("int");
 
                     b.HasKey("MembershipRequestId");

@@ -25,7 +25,7 @@ namespace OR.Data
         public string EmiratesIDNumber { get; set; }
         [MaxLength(250)]
         public string PassportNumber { get; set; }//T
-        [MaxLength(250)]
+
         public string ProfilePic { get; set; }//T
 
         public string EmiratesIdBackUrl { get; set; }//T
@@ -49,6 +49,9 @@ namespace OR.Data
         public string OrderRef { get; set; }
         [MaxLength(50)]
         public string PaymentType { get; set; }
+        public int monthlyQuotaId { get; set; }
+        public int monthlySalaryId { get; set; }
+        public string Comment { get; set; }
 
     }
 }
