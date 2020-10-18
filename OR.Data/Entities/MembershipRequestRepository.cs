@@ -60,8 +60,8 @@ namespace OR.Data
             membership.Status = (int)requestModel.Status;
             membership.PaymentType = requestModel.PaymentType;
             membership.OrderRef = requestModel.OrderRef;
-            membership.monthlyQuotaId = requestModel.monthlyQuotaId;
-            membership.monthlySalaryId = requestModel.MonthlySalaryId;
+            membership.monthlyQuota = requestModel.monthlyQuota;
+            membership.monthlySalary = requestModel.MonthlySalary;
             membership.Comment = requestModel.Comment;
 
             if (isNew)

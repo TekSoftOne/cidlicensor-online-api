@@ -49,8 +49,8 @@ namespace OR.Data
         public string OrderRef { get; set; }
         [MaxLength(50)]
         public string PaymentType { get; set; }
-        public int monthlyQuotaId { get; set; }
-        public int monthlySalaryId { get; set; }
+        public decimal monthlyQuota { get; set; }
+        public decimal monthlySalary { get; set; }
         public string Comment { get; set; }
 
     }

@@ -47,8 +47,8 @@ namespace OR.Data.ViewModels
         public Status Status { get; set; }
         public string OrderRef { get; set; }
         public string PaymentType { get; set; }
-        public int MonthlySalaryId { get; set; }
-        public int monthlyQuotaId { get; set; }
+        public int MonthlySalary { get; set; }
+        public int monthlyQuota { get; set; }
         public string Comment { get; set; }
     }
 
@@ -94,8 +94,8 @@ namespace OR.Data.ViewModels
         public Status Status { get; set; }
         public string OrderRef { get; set; }
         public string PaymentType { get; set; }
-        public int MonthlySalaryId { get; set; }
-        public int monthlyQuotaId { get; set; }
+        public int MonthlySalary { get; set; }
+        public int monthlyQuota { get; set; }
         public string Comment { get; set; }
     }
 }
