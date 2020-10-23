@@ -95,6 +95,11 @@ namespace OR.Data
             return await appContext.MembershipRequests.Where(m => m.MembershipNumber == membershipNumber).FirstOrDefaultAsync();
         }
 
+        public async Task<IEnumerable<MembershipRequest>> GetMembershipOfUser(string phoneNumber)
+        {
+            return await appContext.MembershipRequests.Where(m => m.PhoneNumber == phoneNumber).ToListAsync();
+        }
+
         public async Task<bool> UpdateStatus(string membershipNumber, string status)
         {
             var memberships = await GetMemberships(membershipNumber);

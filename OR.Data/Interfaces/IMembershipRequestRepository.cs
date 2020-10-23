@@ -12,5 +12,6 @@ namespace OR.Data
         Task<IEnumerable<MembershipRequest>> GetMemberships(string membershipNumber);
         Task<bool> UpdateStatus(string membershipNumber, string status);
         Task<MembershipRequest> GetMembership(string membershipNumber);
+        Task<IEnumerable<MembershipRequest>> GetMembershipOfUser(string phoneNumber);
     }
 }

@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
+using OR.Data;
 using OR.Web.Twilio;
 
 namespace OR.Web
@@ -28,13 +29,16 @@ namespace OR.Web
     {
         private readonly UserManager<IdentityUser> _userManager;
         private readonly JwtIssuerOptions _jwtOptions;
+        private readonly IDataFactory _dbContext;
         public AuthController(
             UserManager<IdentityUser> userManager,
-            IOptions<JwtIssuerOptions> jwtOptions
+            IOptions<JwtIssuerOptions> jwtOptions,
+            IDataFactory dbContext
             )
         {
             _userManager = userManager;
             _jwtOptions = jwtOptions.Value;
+            _dbContext = dbContext;
         }
 
         [HttpPost("login")]
@@ -57,14 +61,30 @@ namespace OR.Web
             // Set the timespan the token will be valid for (default is 2 min)
             var validFor = TimeSpan.FromMinutes(20);
 
+            var existingRequest = await _dbContext.MembershipRequests.GetMembershipOfUser(phoneNumber);
+
+            var count = 0;
+            int requestType = 0;
+
+
+            if (existingRequest != null)
+            {
+                count = existingRequest.Count();
+                requestType = existingRequest.Count() > 0 ? existingRequest.FirstOrDefault().TypeOfCustomer : 0;
+            }
+
             var userToken = new
             {
                 id = identity.Claims.Single(c => c.Type == "Id").Value,
                 auth_token = GenerateEncodedToken(phoneNumber, identity.FindFirst("Id"), validFor),
                 email = phoneNumber,
-                expires_in = validFor.TotalSeconds
+                expires_in = validFor.TotalSeconds,
+                requests = count,
+                requestType = requestType
             };
             /// ===== END Generate JWT =====
+            ///
+
 
             return new OkObjectResult(userToken);
         }

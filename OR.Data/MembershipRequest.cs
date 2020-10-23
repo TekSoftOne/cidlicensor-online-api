@@ -12,10 +12,15 @@ namespace OR.Data
         [MaxLength(1000)]
         public string FullAddress { get; set; }
         [MaxLength(250)]
+        [Required]
         public string FullName { get; set; }//T
+        [Required]
         public int LocationId { get; set; }//T
+        [Required]
         public int Gender { get; set; }//T
+        [Required]
         public DateTime BirthDate { get; set; }//T
+        [Required]
         public int NationId { get; set; }//T
         public int ReligionId { get; set; }//K
         [MaxLength(250)]
@@ -25,7 +30,7 @@ namespace OR.Data
         public string EmiratesIDNumber { get; set; }
         [MaxLength(250)]
         public string PassportNumber { get; set; }//T
-
+        [Required]
         public string ProfilePic { get; set; }//T
 
         public string EmiratesIdBackUrl { get; set; }//T
@@ -36,13 +41,20 @@ namespace OR.Data
 
         public string PassportAttachementUrl { get; set; }//T
         [MaxLength(250)]
+        [Required]
         public string Email { get; set; }//T
+        [Required]
         public int RequestCategory { get; set; }
+        [Required]
         public string PhoneNumber { get; set; }
+        [Required]
         public int TypeOfCustomer { get; set; }
         public string AreaId { get; set; }
+        [Required]
         public int AgentId { get; set; }
+        [Required]
         public int MembershipId { get; set; }
+        [Required]
         public string MembershipNumber { get; set; }
         public int Status { get; set; }
         [MaxLength(250)]
