@@ -15,7 +15,7 @@ namespace OR.Web
                 Subject = subject,
                 HasAttachment = false,
                 AttachmentPath = "",
-                SettingFromEmail = "josephnguyen@teksoft1.com",
+                SettingFromEmail = "Online Request <noreply@teksoft1.com>",
                 SettingSMTPServer = "smtp.gmail.com",
                 SettingSMTPUserName = "josephnguyen@teksoft1.com",
                 SettingSMTPPassword = "pyyoppaajylsytel",
